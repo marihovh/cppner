@@ -6,7 +6,7 @@
 
 int main()
 {
-    const WrongAnimal* meta = new WrongAnimal();
+    const Animal* meta = new Animal();
     const Animal* j = new Dog();
     const WrongAnimal* i = new WrongCat();
     std::cout << j->getType() << " " << std::endl;
@@ -17,5 +17,6 @@ int main()
     delete meta;
     delete j;
     delete i;
+    while (1){}
     return 0;
 }

@@ -13,5 +13,5 @@ class Animal
         void setType(std::string tipik);
         std::string getType()  const;
     public:
-        virtual void makeSound()  const;
+        virtual void makeSound() const;
 };

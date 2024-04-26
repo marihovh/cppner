@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 		if (!outputFile.is_open())
 		{
         	std::cerr << "Error: Unable to open file.\n";
-        	return 1; // Return error code
+        	return 1;
    		}
 		while (std::getline(inputFile, line))
 			all_file += (line + '\n');

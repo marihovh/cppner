@@ -42,7 +42,7 @@ void MateriaSource::learnMateria(AMateria* nor)
 {
     for (int i = 0; i < 4; i++)
 	{
-        std::cout << "asas\n";
+        // std::cout << "asas\n";
 		if(this->slot[i] == nor)
 			return;
 		if (!this->slot[i])

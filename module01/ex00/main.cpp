@@ -2,9 +2,10 @@
 
 int main()
 {
-	Zombie *anun;
+	Zombie *anun = NULL;
 
 	anun = newZombie("bobol");
-	anun.announce();
+	anun->announce();
+	delete anun;
 	return 0;
 }

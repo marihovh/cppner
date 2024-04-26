@@ -10,8 +10,8 @@ public:
 	Weapon(std::string tipik);
 	Weapon();
 	~Weapon();
-	std::string get_type();
-	void set_type(std::string tipo);
+	std::string getType();
+	void setType(std::string tipo);
 };
 
 #endif

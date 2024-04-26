@@ -1,7 +1,7 @@
 #pragma once
-#include "./AbsAnimal.hpp"
+#include "./AAnimal.hpp"
 
-class Dog:public AbsAnimal
+class Dog:public AAnimal
 {
     public:
         Dog();

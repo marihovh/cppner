@@ -8,6 +8,7 @@ int main()
 {
     IMateriaSource* src = new MateriaSource();
     src->learnMateria(new Ice());
+    std :: cout << "------------------------------\n";
     // std::cout << src->getSlot(0).getType() << "yea\n";
     src->learnMateria(new Cure());
     ICharacter* me = new Character("me");

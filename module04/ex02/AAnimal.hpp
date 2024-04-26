@@ -1,18 +1,17 @@
 #pragma once
-#include "./Brain.hpp"
 #include <iostream>
+#include "./Brain.hpp"
 
-class AbsAnimal
+class AAnimal
 {
     protected:
         std::string type;
         Brain *brain;
-
     public:
-        AbsAnimal();
-        virtual ~AbsAnimal();
-        AbsAnimal(const AbsAnimal& copik);
-        AbsAnimal& operator= (const AbsAnimal& other);
+        AAnimal();
+        virtual ~AAnimal();
+        AAnimal(const AAnimal& copik);
+        AAnimal& operator= (const AAnimal& other);
         void setType(std::string tipik);
         std::string getType()  const;
     public:

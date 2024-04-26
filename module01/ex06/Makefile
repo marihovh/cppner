@@ -1,7 +1,7 @@
-NAME=brainik
+NAME=harlFilter
 CLANG=c++
 CFLAGS=-Wall -Werror -Wextra -std=c++98
-SRC=main.cpp Cat.cpp Dog.cpp AAnimal.cpp Brain.cpp
+SRC=main.cpp Harl.cpp
 OBJ=$(SRC:%.cpp=%.o)
 RM=rm -rf
 
