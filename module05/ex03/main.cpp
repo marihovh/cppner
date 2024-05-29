@@ -14,15 +14,16 @@ int main()
     {
         AForm* a = es.makeForm("ShrubberyCreationForm", "asalam");
         buro.signForm(*a);
+        // a->execute(buro);
     }
     catch (std::exception& exp)
     {
         std::cout << exp.what() << std::endl;
     }
-    PresidentialPardonForm form1(buro.getName());
+    ShrubberyCreationForm for1(buro.getName());
     try
     {
-        form1.execute(buro);
+        for1.execute(buro);
     }
     catch(std::exception& exp)
     {

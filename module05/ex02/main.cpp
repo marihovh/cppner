@@ -6,7 +6,7 @@
 
 int main()
 {
-    Bureaucrat buro(100, "asalam");
+    Bureaucrat buro(150, "asalam");
     std::cout << buro << std::endl;
     ShrubberyCreationForm form1(buro.getName());
     buro.signForm(form1);

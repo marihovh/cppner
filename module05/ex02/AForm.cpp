@@ -51,7 +51,7 @@ std::ostream& operator<<(std::ostream& stream, const AForm& form)
 
 void AForm::beSigned(const Bureaucrat& buro)
 {
-    if (buro.getGrade() >= this->_signGrade)
+    if (buro.getGrade() <= this->_signGrade)
         this->_iSigned = true;
     else
         throw GradeTooLawException();
