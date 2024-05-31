@@ -5,7 +5,7 @@ template <typename T>
 
 void pr(T par)
 {
-    std::cout << par << std::endl;
+    std::cout << par << " yee" << std::endl;
 }
 
 template <typename T, typename F>

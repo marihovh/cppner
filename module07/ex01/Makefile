@@ -9,14 +9,14 @@ RED=\033[0;31m
 GREEN=\033[0;32m
 NC=\033[0m
 
-all : $(NAME) $(OBJ) Makefile
+all : $(NAME) $(OBJ) Makefile iter.hpp
 
 x:
 	@make all
 	@echo "$(YELLOW)-------------------------------result--------------------------------${NC}"
 	@./convert
 
-%.o:%.cpp
+%.o:%.cpp iter.hpp
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ) Makefile
