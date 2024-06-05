@@ -10,7 +10,7 @@ void pr(T par)
 
 template <typename T, typename F>
 
-void iter(T* arr, int len, F foo)
+void iter(T* arr, int len, F<T> foo)
 {
     for (int i = 0; i < len; i++)
         foo(arr[i]);

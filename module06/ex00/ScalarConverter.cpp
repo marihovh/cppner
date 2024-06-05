@@ -4,6 +4,7 @@ void parse(std::string value)
 {
     if (value != "nan" && value != "+inf" && value != "-inf" && value != "nanf" && value != "+inff" && value != "-inff")
     {
+        if (value.size() > 1)
             for (unsigned int i = 0; i < value.size(); i++)
             {   
                 if (value[i] != '.' && value[i] != 'f' && value[i] != '+' && value[i] != '-' && !std::isdigit(value[i]))
@@ -14,29 +15,42 @@ void parse(std::string value)
 
 void to_char(std::string value)
 {
-    int num = std::atoi(value.c_str());
-    if ((value.size() > 1 && !num))
-        throw ScalarConverter::ImpossibleToConvert();
-    if (!std::isprint(num))
-        throw ScalarConverter::NonDisplayable();
-    std::cout << static_cast<char>(num) << std::endl;
+    if (value.size() == 1 && !std::isdigit(value[0]))
+        std::cout << value[0] << std::endl;
+    else
+    {
+        int tiv = std::atoi(value.c_str());
+        if (value.size() > 1 && !std::isdigit(value[0]))
+            throw ScalarConverter::ImpossibleToConvert();
+        if (!std::isprint(tiv))
+            throw ScalarConverter::NonDisplayable();
+        std::cout << static_cast<char>(tiv) << std::endl;
+    }
 }
 
 void to_int(std::string value)
 {
-    long num = std::atol(value.c_str());
+    long num;
 
-    if (value.size() > 1 && !num)
-        throw ScalarConverter::ImpossibleToConvert();
-    if (num <= INT_MIN || num >= INT_MAX)
-        throw ScalarConverter::ImpossibleToConvert();
+    if (value.size() == 1 && !std::isdigit(value[0]))
+        num = static_cast<int>(value[0]);
+    else
+    {
+        num = std::atol(value.c_str());
+        if (num <= INT_MIN || num >= INT_MAX)
+            throw ScalarConverter::ImpossibleToConvert();
+    }
     std::cout << num << std::endl;
 }
 
 void to_float(std::string value)
 {
-    float num = std::atof(value.c_str());
+    float num;
 
+    if (value.size() == 1 && !std::isdigit(value[0]))
+        num = static_cast<int>(value[0]);
+    else
+        num = std::atof(value.c_str());
     if (static_cast<int>(num) - num == 0)
         std::cout << num << ".0";
     else
@@ -46,8 +60,12 @@ void to_float(std::string value)
 
 void to_double(std::string value)
 {
-    double num = std::atof(value.c_str());
+    double num;
 
+    if (value.size() == 1 && !std::isdigit(value[0]))
+        num = static_cast<int>(value[0]);
+    else
+        num = std::atof(value.c_str());
     if (static_cast<int>(num) - num == 0)
         std::cout << num << ".0";
     else

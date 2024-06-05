@@ -14,7 +14,7 @@ all : $(NAME) $(OBJ) Makefile
 x:
 	@make all
 	@echo "$(YELLOW)-------------------------------result--------------------------------${NC}"
-	@./convert
+	@./$(NAME)
 
 %.o:%.cpp
 	$(CLANG) $(CFLAGS) -c $< -o $@

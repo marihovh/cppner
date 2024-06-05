@@ -14,7 +14,7 @@ all : $(NAME) $(OBJ) Makefile iter.hpp
 x:
 	@make all
 	@echo "$(YELLOW)-------------------------------result--------------------------------${NC}"
-	@./convert
+	@./$(NAME)
 
 %.o:%.cpp iter.hpp
 	$(CLANG) $(CFLAGS) -c $< -o $@
