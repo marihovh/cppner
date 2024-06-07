@@ -68,7 +68,11 @@
 		"clocale": "cpp",
 		"execution": "cpp",
 		"variant": "cpp",
-		"*.tpp": "cpp"
+		"*.tpp": "cpp",
+		"charconv": "cpp",
+		"span": "cpp",
+		"__availability": "cpp",
+		"filesystem": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }
