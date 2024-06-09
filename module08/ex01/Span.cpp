@@ -2,8 +2,6 @@
 
 Span::Span(const unsigned int nb)
 {
-    if (nb > this->_n)
-        throw MaxSizeReached();
     this->_n = nb;
 }
 
@@ -25,7 +23,7 @@ Span& Span::operator=(const Span& other)
 
 void Span::addNumber(const int nb)
 {
-    if (this->_values.size() > this->_n)
+    if (this->_values.size() >= this->_n)
         throw MaxSizeReached();
     this->_values.push_back(nb);
 }

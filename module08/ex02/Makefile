@@ -16,7 +16,7 @@ x:
 	@echo "$(YELLOW)-------------------------------result--------------------------------${NC}"
 	@./$(NAME)
 
-%.o:%.cpp Array.hpp Array.tpp
+%.o:%.cpp
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ) Makefile
