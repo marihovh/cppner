@@ -33,10 +33,7 @@ std::string* ognich(char ch, std::string line)
     if (!ret[1].find(ch))
         throw std::runtime_error("Wrong format of file");
     ret[0] = trim(ret[0]);
-    // std::cout << ret[0] << std::endl;
     ret[1] = trim(ret[1]);
-    // std::cout << ret[1] << std::endl;
-
     return ret;
 }
 
@@ -120,23 +117,23 @@ double check_value(std::string value)
 
 void BitcoinExchange::ready_print()
 {
+
     std::string line;
     std::string *inputik;
     std::map<std::string, std::string>::iterator bound;
-    while (std::getline(this->_input, line))
+    std::getline(this->_input, line);
+    if (line.empty())
+        throw std::runtime_error("empty file");
+    while (!line.empty())
     {
-        try
-        {
-            inputik = ognich('|', line);
-            bound = this->_values.lower_bound(inputik[0]);
-            check_date(inputik[0]);
-            double value = check_value(inputik[1]);
-            std::cout << inputik[0] << " => " << inputik[1] << " = " << value * std::strtod(bound->second.c_str(),NULL) << std::endl;
-        }
-        catch(const std::exception& e)
-        {
-            std::cerr << "ERROR: " << e.what() << '\n';
-        }
+        inputik = ognich('|', line);
+        bound = this->_values.lower_bound(inputik[0]);
+        check_date(inputik[0]);
+        double value = check_value(inputik[1]);
+        std::cout << inputik[0] << " => " << inputik[1] << " = " << value * std::strtod(bound->second.c_str(),NULL) << std::endl;
+        if (this->_input.eof())
+            break ;
+        std::getline(this->_input, line);
     }
 }
 
@@ -144,7 +141,7 @@ void BitcoinExchange::exchange()
 {
     this->checkFile();
     this->get_data();
-    // this->ready_print();
+    this->ready_print();
 }
 
 void BitcoinExchange::get_data()
@@ -169,12 +166,15 @@ void BitcoinExchange::get_data()
     value = trim(value);
     if (value.compare("exchange_rate"))
         throw std::runtime_error("Wrong format of file");
-    while (std::getline(database, line))
+    std::getline(database, line);
+    while (!line.empty())
     {
         std::string *datastik = ognich(',', line);
-    std::cout << line << "\n";
         this->_values.insert(std::pair<std::string, std::string>(datastik[0], datastik[1]));
         delete[] datastik;
+        if (database.eof())
+            break ;
+        std::getline(database, line);
     }
     database.close();
 }

@@ -25,10 +25,13 @@ RPN::~RPN()
 {
 }
 
-std::string trim(const std::string& str) {
+std::string trim(const std::string &str)
+{
     std::string result;
-    for (std::string::const_iterator it = str.begin(); it != str.end(); ++it) {
-        if (!std::isspace(*it)) {
+    for (std::string::const_iterator it = str.begin(); it != str.end(); ++it)
+    {
+        if (!std::isspace(*it))
+        {
             result += *it;
         }
     }
@@ -50,20 +53,23 @@ std::string preparse(char **arg)
 void RPN::parse(char **arg)
 {
     this->_argument = preparse(arg);
-    std::cout << this->_argument << "\n";
+    size_t i = -1;
+    while (++i < this->_argument.length())
+        if (!std::isspace(this->_argument[i]))
+            break ;
+    if (i == this->_argument.length())
+        throw std::runtime_error("empty");
     for (size_t i = 0; i < this->_argument.length(); i++)
     {
         if (this->_argument[i] != '+' && this->_argument[i] != '-' && this->_argument[i] != '*' && this->_argument[i] != '/' && !std::isspace(this->_argument[i]) && !std::isdigit(this->_argument[i]))
             throw std::runtime_error("no proper arguments");
         if (std::isdigit(this->_argument[i]) && this->_argument[i + 1] && std::isdigit(this->_argument[i + 1]))
             throw std::runtime_error("no proper arguments");
-        if ((this->_argument[i] == '+' || this->_argument[i] == '-' || this->_argument[i] == '*' || this->_argument[i] == '/') \
-            && this->_argument[i + 1] && !(std::isspace(this->_argument[i + 1]) || std::isdigit(this->_argument[i + 1])))
+        if ((this->_argument[i] == '+' || this->_argument[i] == '-' || this->_argument[i] == '*' || this->_argument[i] == '/') && this->_argument[i + 1] && !(std::isspace(this->_argument[i + 1]) || std::isdigit(this->_argument[i + 1])))
         {
             throw std::runtime_error("no proper arguments");
         }
     }
-    std::cout << "everything is great\n";
 }
 
 void RPN::do_op()
@@ -98,14 +104,6 @@ void RPN::do_op()
 
 void RPN::calculate(char **args)
 {
-    try
-    {
-       this->parse(args);
-       this->do_op();
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    
+    this->parse(args);
+    this->do_op();
 }
